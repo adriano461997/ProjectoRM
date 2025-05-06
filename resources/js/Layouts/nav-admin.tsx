@@ -136,18 +136,22 @@ export const NavAdmin = () => {
             <SidebarGroup>
                 <SidebarGroupLabel>Relatórios</SidebarGroupLabel>
 
-                <SidebarMenu>
-                {
-                    props.categorias.map((item)=>(
-                        <SidebarMenuItem key={item.id}>
-                            <SidebarMenuButton title={item.nome} className={"truncate"} asChild isActive={route().current("relatorio.index", [item.slug])}>
-                                <Link href={route("relatorio.index", [item.slug])}>
-                                    <ListIcon /> {item.nome}
-                                </Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    ))
-                }
+                <SidebarMenu>    
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={route().current("demonstrativo-financeiro.report")}> 
+                      <Link href={route("demonstrativo-financeiro.report")}> 
+                        <Calculator /> Demonstração de Resultados 
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild isActive={route().current("relatorios.index")}> 
+                      <Link href={route("relatorios.index")}> 
+                        <ChartBar /> Imprimir Relatórios 
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
                 </SidebarMenu>
 
             </SidebarGroup>

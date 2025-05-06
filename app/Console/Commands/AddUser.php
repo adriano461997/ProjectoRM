@@ -27,6 +27,7 @@ class AddUser extends Command
      */
     public function handle()
     {
+
         $nome = $this->ask('Qual o nome do usuário?');
         $email = $this->ask('Qual o e-mail do usuário?');
         $password = $this->ask('Qual a senha do usuário?');

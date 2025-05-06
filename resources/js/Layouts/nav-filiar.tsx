@@ -8,7 +8,7 @@ import {
     SidebarMenuItem
 } from "@/components/ui/sidebar";
 import {Link, usePage} from "@inertiajs/react";
-import {ArrowRight, Home, LayoutPanelTop, ListIcon, Users} from "lucide-react";
+import {ArrowRight, BarChart2, Home, LayoutPanelTop, ListIcon, Users} from "lucide-react";
 
 type Props = {
 
@@ -43,6 +43,20 @@ export const NavFiliar = () => {
                 </SidebarMenuItem>
                 </SidebarMenu>
 
+            </SidebarGroup>
+
+            <SidebarGroup>
+                <SidebarGroupLabel>Financeiro</SidebarGroupLabel>
+                
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild isActive={route().current("demonstrativo-financeiro.index", props.f.slug)}>
+                            <Link href={route("demonstrativo-financeiro.index", props.f.slug)}>
+                                <BarChart2 /> Demonstrativo Financeiro
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarGroup>
 
             <SidebarGroup>

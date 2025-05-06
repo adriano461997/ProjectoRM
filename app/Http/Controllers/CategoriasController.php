@@ -9,7 +9,7 @@ class CategoriasController extends Controller
 {
     function index(){
         $items = Categorias::
-            with(["tipo_receita:id,nome"])
+            with(["tipo_receita:id,nome", "subcategorias"])
             ->orderBy("id", "desc");
 
         if(request("q")){
@@ -18,6 +18,11 @@ class CategoriasController extends Controller
 
         $items = $items->paginate(50, ["*"], "p");
 
+        // Count subcategories for each category
+        $items->getCollection()->transform(function ($item) {
+            $item->subcategorias_count = $item->subcategorias->count();
+            return $item;
+        });
 
         return inertia("categorias/index", [
             "items"=> $items,
